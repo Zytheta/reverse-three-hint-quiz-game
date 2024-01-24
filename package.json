@@ -1,0 +1,23 @@
+{
+  "name": "reverse-three-hint-quiz-game",
+  "version": "1.0.0",
+  "description": "Hint provider for reverse quiz game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zytheta/reverse-three-hint-quiz-game.git"
+  },
+  "keywords": [
+    "reverse",
+    "quiz"
+  ],
+  "author": "Chris Turpin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zytheta/reverse-three-hint-quiz-game/issues"
+  },
+  "homepage": "https://github.com/Zytheta/reverse-three-hint-quiz-game#readme"
+}
