@@ -1,7 +1,7 @@
 function component () {
   const element = document.createElement('div')
 
-  element.innerHTML = `Hello user Chris`
+  element.innerHTML = `Excellent`
 
   return element
 }
