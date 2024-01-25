@@ -4,7 +4,7 @@
   "description": "Hint provider for reverse quiz game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/Zytheta/reverse-three-hint-quiz-game/issues"
   },
-  "homepage": "https://github.com/Zytheta/reverse-three-hint-quiz-game#readme"
+  "homepage": "https://github.com/Zytheta/reverse-three-hint-quiz-game#readme",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
