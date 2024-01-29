@@ -4,10 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="<%= htmlWebpackPlugin.options.favicon %>"
+    />
   </head>
   <body>
     <header class="header">
       <h2>Reverse Three Hint Game</h2>
     </header>
+    <main>
+      <div class="quiz-board-wrapper" id="quiz-board-wrapper">
+        <div id="hint1" class="hint-card">
+          <h1>Hint 1</h1>
+        </div>
+        <div id="hint1-text" class="hint-card"></div>
+        <div id="hint2" class="hint-card">
+          <h1>Hint 2</h1>
+        </div>
+        <div id="hint2-text" class="hint-card"></div>
+        <div id="hint3" class="hint-card">
+          <h1>Hint 3</h1>
+        </div>
+        <div id="hint3-text" class="hint-card"></div>
+      </div>
+      <div class="buttons">
+        <button type="button" id="resetBtn">Reset Hints</button>
+        <button type="button" id="newGameBtn">New Game</button>
+        <button type="button" id="addBtn">Add A Card</button>
+      </div>
+    </main>
+    <footer>
+      <a target="_blank" href="https://icons8.com/icon/648ZNVQMu40x/quiz"
+        >Quiz</a
+      >
+      icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+      <span>Images and art sourced from sites like Freepik</span>
+    </footer>
   </body>
 </html>

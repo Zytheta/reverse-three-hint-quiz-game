@@ -1,0 +1,34 @@
+{
+  "themes": [
+    {
+      "id": 1,
+      "name": "Color", 
+      "hints": [
+        {"id": 101, "text": "black", "image": "./images/colors/black.png"},
+        {"id": 102, "text": "gray", "image": "./images/colors/gray.png"},
+        {"id": 103, "text": "white", "image": "./images/colors/white.png"},
+        {"id": 104, "text": "pink", "image": "./images/colors/pink.png"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Shape",
+      "hints": [
+        {"id": 201, "text": "circle", "image": "./images/shapes/circle.png"},
+        {"id": 202, "text": "triangle", "image": "./images/shapes/triangle.png"},
+        {"id": 203, "text": "square", "image": "./images/shapes/square.png"},
+        {"id": 204, "text": "diamond", "image": "./images/shapes/diamond.png"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Size",
+      "hints": [
+        {"id": 301, "text": "big", "image": "./images/size/big.png"},
+        {"id": 302, "text": "small", "image": "./images/size/small.png"},
+        {"id": 303, "text": "long", "image": "./images/size/longAndShort.jpg"},
+        {"id": 304, "text": "short", "image": "./images/size/longAndShort.jpg"} 
+        ]
+    } 
+  ]
+}

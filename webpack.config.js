@@ -27,7 +27,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Reverse Three Hint Quiz',
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src/template.html')
+      template: path.resolve(__dirname, 'src/template.html'),
+      favicon: path.resolve(__dirname, 'images/icons8-quiz-32.png')
     })
   ],
   optimization: {
