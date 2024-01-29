@@ -7,11 +7,6 @@ module.exports = {
     bundle: path.resolve(__dirname, 'src/index.js')
   },
   devtool: 'inline-source-map',
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Reverse Three Hint Quiz'
-    })
-  ],
   devServer: {
     static: path.resolve(__dirname, 'dist')
   },
@@ -27,8 +22,15 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Reverse Three Hint Quiz',
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src/template.html')
+    })
+  ],
+  optimization: {
+    runtimeChunk: 'single'
   }
-  //   optimization: {
-  //     runTimeChunk: 'single'
-  //   }
 }

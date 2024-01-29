@@ -53,8 +53,10 @@ h6 {
 :root {
   --font-size: 18px;
   --font-family: 'Patrick Hand', 'Arial';
-  --font-color: #3a4d39;
-  --background-color: #ece3ce;
+  --font-color: #4f6f52;
+  --background-color: #739072;
+  --tile-background-color: #ece3ce;
+  --tile-border-color: #3a4d39;
 }
 
 body {
@@ -62,4 +64,8 @@ body {
   font-size: var(--font-size);
   font-family: var(--font-family);
   color: var(--font-color);
+}
+
+.header {
+  color: var(--tile-background-color);
 }
