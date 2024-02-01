@@ -1,47 +1,52 @@
 import "./style.css";
+import hintsJson from "./hints.json";
+// Assuming this code is in a file located in the 'src' directory
 
-const reverseThreeHintQuiz = (function () {
-  let hintsData; // Variable to store the loaded JSON data
+// Create a context with all images in the 'images' directory
+const importAll = (r) => r.keys().map(r);
+const images = importAll(
+  require.context("/images", true, /\.(png|jpe?g|gif)$/)
+);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/src/hints.json");
-      hintsData = await response.json();
-      return hintsData;
-    } catch (error) {
-      console.error("Error loading hints.json:", error);
-    }
-  };
+// Extract image paths from module objects
+const imagePathArray = images.map((image) => image.default);
 
+// Now, 'images' is an array containing all image paths
+console.log(imagePathArray);
+
+(function initializeHintBoard() {
   const hintBoard = {
     init: function () {
       this.cacheDom();
-      //   this.render();
       this.setUpEventListeners();
-      fetchData();
     },
 
     cacheDom: function () {
       this.hint1Text = document.getElementById("hint1-text");
+      this.hint1Pic = document.getElementById("hint1-pic");
       this.hint2Text = document.getElementById("hint2-text");
+      this.hint2Pic = document.getElementById("hint2-pic");
       this.hint3Text = document.getElementById("hint3-text");
-
-      console.log("This hint1Text test:" + this.hint1Text);
+      this.hint3Pic = document.getElementById("hint3-pic");
     },
 
     setUpEventListeners: function () {
       this.newGameBtn = document.getElementById("new-game-btn");
       this.newGameBtn.addEventListener("click", this.newGame.bind(this));
 
-      console.log("This newGameBtn test:" + this.newGameBtn);
-
-      //   this.resetBtn = document.getElementById("reset-btn");
-      //   this.resetBtn.addEventListener("click", this.resetHints.bind(this));
+      // this.resetBtn = document.getElementById("reset-btn");
+      // this.resetBtn.addEventListener("click", this.resetHints.bind(this));
     },
 
     newGame: function () {
+      const hintsData = hintsJson;
+      console.log("hintsData:", hintsData);
       // Clone the original themes array to avoid modifying the original data
-      const themes = JSON.parse(JSON.stringify(hintsData.themes));
+      const themes = JSON.parse(hintsData);
+      console.log("themes:", themes);
+      // Take the object and put it into an array
+      const themesArray = themes.themes;
+      console.log("themesArray:", themesArray);
 
       // Initialize an array to store the selected hints
       const selectedHints = [];
@@ -53,13 +58,14 @@ const reverseThreeHintQuiz = (function () {
       // Loop three times to select three themes
       for (let i = 0; i < 3; i++) {
         // If there are no more themes, break out of the loop
-        if (themes.length === 0) break;
+        if (themesArray.length === 0) break;
 
         // Get a random index for the themes array
-        const randomThemeIndex = getRandomIndex(themes);
+        const randomThemeIndex = getRandomIndex(themesArray);
+        console.log("randomThemeIndex:", randomThemeIndex);
 
         // Get the selected theme
-        const selectedTheme = themes[randomThemeIndex];
+        const selectedTheme = themesArray[randomThemeIndex];
 
         // Get a random index for the hints array within the selected theme
         const randomHintIndex = getRandomIndex(selectedTheme.hints);
@@ -71,7 +77,7 @@ const reverseThreeHintQuiz = (function () {
         selectedHints.push(selectedHint);
 
         // Remove the selected theme from the pool
-        themes.splice(randomThemeIndex, 1);
+        themesArray.splice(randomThemeIndex, 1);
       }
 
       // Log the selected hints (you can modify this part based on your needs)
@@ -87,15 +93,29 @@ const reverseThreeHintQuiz = (function () {
       this.hint2Text.textContent = `${hints[1].text}`;
       this.hint3Text.textContent = `${hints[2].text}`;
 
-      // You can similarly update hint2Text and hint3Text
+      // Clear the pictures
+      this.hint1Pic.innerHTML = "";
+      this.hint2Pic.innerHTML = "";
+      this.hint3Pic.innerHTML = "";
+
+      // Create a new img element
+      const hint1Img = document.createElement("img");
+      const hint2Img = document.createElement("img");
+      const hint3Img = document.createElement("img");
+
+      // Set the source of the hint image
+      hint1Img.src = `${hints[0].image}`;
+      hint2Img.src = `${hints[1].image}`;
+      hint3Img.src = `${hints[2].image}`;
+
+      // Append the image
+      this.hint1Pic.appendChild(hint1Img);
+      this.hint2Pic.appendChild(hint2Img);
+      this.hint3Pic.appendChild(hint3Img);
     },
-
-    // render: function () {},
   };
 
-  return {
-    hintBoard: hintBoard,
-  };
+  hintBoard.init();
+
+  return hintBoard;
 })();
-
-reverseThreeHintQuiz.hintBoard.init();

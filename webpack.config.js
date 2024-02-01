@@ -23,11 +23,18 @@ module.exports = {
       },
       {
         test: /\.json$/i,
-        loader: "file-loader",
+        type: "asset/source",
         include: path.resolve(__dirname, "src"),
-        options: {
-          name: "data/[name].[ext]", // Output file name
-          publicPath: "data/", // Add this line
+        generator: {
+          filename: "[name][ext]",
+        },
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+        include: path.resolve(__dirname, "images"),
+        generator: {
+          filename: "[name][ext]",
         },
       },
     ],
@@ -35,7 +42,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Reverse Three Hint Quiz",
-      filename: "index.html",
+      name: "index.html",
       template: path.resolve(__dirname, "src/template.html"),
       favicon: path.resolve(__dirname, "dist/icons8-quiz-32.png"),
     }),

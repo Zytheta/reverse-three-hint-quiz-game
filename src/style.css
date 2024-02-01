@@ -102,6 +102,7 @@ body {
   border-radius: 20px;
   border-color: #3a4d39;
   border-style: solid;
+  font-size: var(--h1-font-size);
 }
 
 #hint1 {
@@ -114,6 +115,11 @@ body {
   text-indent: 4ch;
 }
 
+#hint1-pic {
+  grid-area: a3;
+  justify-content: center;
+}
+
 #hint2 {
   grid-area: b1;
   justify-content: center;
@@ -124,6 +130,11 @@ body {
   text-indent: 4ch;
 }
 
+#hint2-pic {
+  grid-area: b3;
+  justify-content: center;
+}
+
 #hint3 {
   grid-area: c1;
   justify-content: center;
@@ -132,6 +143,11 @@ body {
 #hint3-text {
   grid-area: c2;
   text-indent: 4ch;
+}
+
+#hint3-pic {
+  grid-area: c3;
+  justify-content: center;
 }
 
 .buttons {
