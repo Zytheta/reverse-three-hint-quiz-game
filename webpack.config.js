@@ -31,11 +31,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
-        include: path.resolve(__dirname, "images"),
-        generator: {
-          filename: "[name][ext]",
-        },
+        type: "asset/inline",
       },
     ],
   },

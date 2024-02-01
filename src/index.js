@@ -1,18 +1,5 @@
 import "./style.css";
 import hintsJson from "./hints.json";
-// Assuming this code is in a file located in the 'src' directory
-
-// Create a context with all images in the 'images' directory
-const importAll = (r) => r.keys().map(r);
-const images = importAll(
-  require.context("/images", true, /\.(png|jpe?g|gif)$/)
-);
-
-// Extract image paths from module objects
-const imagePathArray = images.map((image) => image.default);
-
-// Now, 'images' is an array containing all image paths
-console.log(imagePathArray);
 
 (function initializeHintBoard() {
   const hintBoard = {
@@ -98,15 +85,23 @@ console.log(imagePathArray);
       this.hint2Pic.innerHTML = "";
       this.hint3Pic.innerHTML = "";
 
+      // Set the source of the hint image using require.context
+      const context = require.context("../images", true, /\.(png|jpe?g|gif)$/);
+      console.log("Context of hint 1 image:", context(`.${hints[0].image}`));
+
       // Create a new img element
       const hint1Img = document.createElement("img");
       const hint2Img = document.createElement("img");
       const hint3Img = document.createElement("img");
 
       // Set the source of the hint image
-      hint1Img.src = `${hints[0].image}`;
-      hint2Img.src = `${hints[1].image}`;
-      hint3Img.src = `${hints[2].image}`;
+      const hint1ImgPath = context(`./${hints[0].image}`);
+      const hint2ImgPath = context(`./${hints[1].image}`);
+      const hint3ImgPath = context(`./${hints[2].image}`);
+
+      hint1Img.src = hint1ImgPath.default;
+      hint2Img.src = hint2ImgPath.default;
+      hint3Img.src = hint3ImgPath.default;
 
       // Append the image
       this.hint1Pic.appendChild(hint1Img);
