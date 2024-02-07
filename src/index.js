@@ -74,6 +74,15 @@ import hintsJson from "./hints.json";
       this.renderHints(selectedHints);
     },
 
+    importImages: function (r) {
+      let images = {};
+      r.keys().map((item) => {
+        images = r(item);
+      });
+      console.log(`Importing images ${r}`);
+      return images;
+    },
+
     renderHints: function (hints) {
       // Example: Log the selected hints to the hint elements
       this.hint1Text.textContent = `${hints[0].text}`;
@@ -85,9 +94,12 @@ import hintsJson from "./hints.json";
       this.hint2Pic.innerHTML = "";
       this.hint3Pic.innerHTML = "";
 
+      // Import the images
+      this.importImages();
+
       // Set the source of the hint image using require.context
       const context = require.context("../images", true, /\.(png|jpe?g|gif)$/);
-      console.log("Context of hint 1 image:", context(`.${hints[0].image}`));
+      console.log("Context of hint 1 image:", `${hints[0].image}`);
 
       // Create a new img element
       const hint1Img = document.createElement("img");
@@ -95,13 +107,14 @@ import hintsJson from "./hints.json";
       const hint3Img = document.createElement("img");
 
       // Set the source of the hint image
-      const hint1ImgPath = context(`./${hints[0].image}`);
-      const hint2ImgPath = context(`./${hints[1].image}`);
-      const hint3ImgPath = context(`./${hints[2].image}`);
+      const hint1ImgPath = `.${hints[0].image}`;
+      const hint2ImgPath = `.${hints[1].image}`;
+      const hint3ImgPath = `.${hints[2].image}`;
+      console.log(`hint1ImgPath:, ${hint1ImgPath}`);
 
-      hint1Img.src = hint1ImgPath.default;
-      hint2Img.src = hint2ImgPath.default;
-      hint3Img.src = hint3ImgPath.default;
+      hint1Img.src = hint1ImgPath;
+      hint2Img.src = hint2ImgPath;
+      hint3Img.src = hint3ImgPath;
 
       // Append the image
       this.hint1Pic.appendChild(hint1Img);
